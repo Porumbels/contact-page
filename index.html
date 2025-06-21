@@ -3,43 +3,131 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Me</title>
+  <title>Contact Before Booking</title>
   <style>
     body {
-      font-family: sans-serif;
-      background: #f5f5f5;
-      text-align: center;
-      padding: 2rem;
+      background: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
     .card {
       background: white;
       padding: 2rem;
-      border-radius: 12px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      text-align: center;
     }
-    .whatsapp {
-      font-size: 1.2rem;
-      color: #25D366;
-      margin-top: 1rem;
-      word-break: break-word;
+    h1 {
+      color: #444;
+      margin-bottom: 1rem;
     }
-    a {
-      text-decoration: none;
+    .msg {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+    .highlight {
       color: #25D366;
       font-weight: bold;
+    }
+    .phone {
+      font-size: 1.4rem;
+      margin: 1rem 0;
+      background: #e8f5e9;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
+      font-weight: bold;
+    }
+    .copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #25D366;
+    }
+    .copy-btn:hover {
+      text-decoration: underline;
+    }
+    .copied {
+      font-size: 0.9rem;
+      color: #4CAF50;
+      margin-top: 0.5rem;
+      display: none;
+    }
+    .btn {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      padding: 0.8rem 1.4rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      text-decoration: none;
+      margin-top: 1rem;
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: #1eb255;
+    }
+    .lang {
+      margin-top: 2rem;
+      text-align: left;
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .lang strong {
+      display: inline-block;
+      margin-bottom: 0.4rem;
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h2>Let's Chat on WhatsApp</h2>
-    <p>Add my number manually or tap the link below to start chatting:</p>
-    <div class="whatsapp">
-      📞 +1234567890<br />
-      💬 <a href="https://wa.me/1234567890" target="_blank">wa.me/1234567890</a>
+    <h1>📢 Please Contact Before Booking</h1>
+    <p class="msg">
+      🔔 <span class="highlight">To avoid double reservations</span> and ensure availability, please send a message on WhatsApp <strong>before submitting any booking request</strong>.
+    </p>
+
+    <div class="phone">
+      <span id="phone-number">+39 375 911 7807</span>
+      <button class="copy-btn" onclick="copyPhone()">📋 Copy</button>
+    </div>
+    <div id="copy-status" class="copied">✔️ Copied to clipboard!</div>
+
+    <a class="btn" href="https://wa.me/393759117807" target="_blank">Chat on WhatsApp 💬</a>
+
+    <div class="lang">
+      <p><strong>🇫🇷 Français:</strong><br />
+      🔔 Pour éviter les doubles réservations, merci de <strong>me contacter sur WhatsApp</strong> avant de faire une demande sur Booking.</p>
+
+      <p><strong>🇮🇹 Italiano:</strong><br />
+      🔔 Per evitare doppie prenotazioni, ti preghiamo di <strong>scrivermi su WhatsApp</strong> prima di inviare la richiesta su Booking.</p>
     </div>
   </div>
+
+  <script>
+    function copyPhone() {
+      const phoneText = document.getElementById("phone-number").innerText;
+      navigator.clipboard.writeText(phoneText).then(() => {
+        const status = document.getElementById("copy-status");
+        status.style.display = "block";
+        setTimeout(() => {
+          status.style.display = "none";
+        }, 2000);
+      });
+    }
+  </script>
 </body>
 </html>
